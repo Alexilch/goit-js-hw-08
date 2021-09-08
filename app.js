@@ -77,7 +77,6 @@ galleryContainer.addEventListener('click',onGalleryImgClick);
 closeModalBtn.addEventListener('click', modalClose);
 modalOverlay.addEventListener('click', overlayClick);
 
-
 function createGalleryMarkup(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
@@ -147,7 +146,6 @@ function onArrowRight() {
     indexOfImg = -1;
   }
   imgScale.src = sourceImg[indexOfImg + 1];
-  //  console.log(indexOfImg);
 }
 
 function onArrowLeft() {
@@ -158,5 +156,4 @@ function onArrowLeft() {
       indexOfImg = sourceImg.length;
     }
     imgScale.src = sourceImg[indexOfImg - 1];
-    // console.log(indexOfImg);
 }
