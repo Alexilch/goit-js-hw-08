@@ -132,12 +132,11 @@ function keyboardControls(event){
   modalClose()
  }
 
- if(event.key === 'ArrowRight'){
-  console.log('????');
-  // imgScale.src = imgScale.nextElementSibling.src;
- }
+//  if(event.key === 'ArrowRight'){
+  // console.log('>');
+//  }
 
- if(event.key === 'ArrowLeft'){
- }
+//  if(event.key === 'ArrowLeft'){
+
+//  }
 }
-
