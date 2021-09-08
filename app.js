@@ -101,8 +101,8 @@ function createGalleryMarkup(galleryItems) {
 }
 
 function onGalleryImgClick(event) {
-  const clickImage = event.target.classList.contains('gallery__image')
-  if(!clickImage){
+  const clickImage = event.target.classList.contains('gallery__image');
+  if(!clickImage) {
     return
   }
   imgScale.src = event.target.dataset.source;
@@ -111,32 +111,52 @@ function onGalleryImgClick(event) {
 }
 
 function modalOpen() {
-  lightBox.classList.add('is-open')
-  window.addEventListener('keydown', keyboardControls)
+  lightBox.classList.add('is-open');
+  window.addEventListener('keydown', keyboardControls);
 }
 
 function modalClose() {
-  lightBox.classList.remove('is-open')
-  imgScale.src = ''
-  window.removeEventListener('keydown', keyboardControls)
+  lightBox.classList.remove('is-open');
+  imgScale.src = '';
+  window.removeEventListener('keydown', keyboardControls);
 }
 
-function overlayClick(event){
+function overlayClick(event) {
   if (event.target === modalOverlay){
     modalClose();
   }
 }
 
-function keyboardControls(event){
+function keyboardControls(event) {
  if(event.key === 'Escape'){
-  modalClose()
+  modalClose();
  }
+ if(event.key === 'ArrowRight'){
+  onArrowRight();
+ }
+ if(event.key === 'ArrowLeft'){
+  onArrowLeft();
+ }
+}
 
-//  if(event.key === 'ArrowRight'){
-  // console.log('>');
-//  }
+function onArrowRight() {
+  const sourceImg = galleryItems.map(({ original }) => original);
+  let indexOfImg = sourceImg.indexOf(imgScale.src);
 
-//  if(event.key === 'ArrowLeft'){
+  if (indexOfImg + 1 > sourceImg.length - 1) {
+    indexOfImg = -1;
+  }
+  imgScale.src = sourceImg[indexOfImg + 1];
+  //  console.log(indexOfImg);
+}
 
-//  }
+function onArrowLeft() {
+ const sourceImg = galleryItems.map(({ original }) => original);
+  let indexOfImg = sourceImg.indexOf(imgScale.src);
+
+  if (indexOfImg === 0) {
+      indexOfImg = sourceImg.length;
+    }
+    imgScale.src = sourceImg[indexOfImg - 1];
+    // console.log(indexOfImg);
 }
